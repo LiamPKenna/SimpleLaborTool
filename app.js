@@ -4,21 +4,8 @@ const writeCsv = require('./js/csvHandler.js').writeCsv;
 const appendToFile = require('./js/csvHandler.js').appendToFile;
 const fs = require('fs');
 
-const cafesArray = [
-  'Division',
-  'Belmont',
-  'Downtown',
-  'Ace PDX',
-  '12th',
-  'Ace NYC',
-  'W8th',
-  'Santa Fe',
-  'NOLA',
-  'Morgan CHI',
-  'Pacific',
-  'Warner',
-  'E8th LAX'
-]
+const cafesArray = require('./js/globalVariables.js').cafesArray; // Array of names [cafe1Name, cafe2Name, ...]
+const cafeResults = require('./js/globalVariables.js').cafeResults; // 2d object {cafe1Name: {}, cafe2Name: {} ...}
 
 const dateRange = {};
 
@@ -41,22 +28,6 @@ const toDate = (dateString) => {
   inst.setMinutes(hrsAndMin[1]);
   return inst;
 }
-
-const cafeResults = {
-  'Division': {},
-  'Belmont': {},
-  'Downtown': {},
-  'Ace PDX': {},
-  '12th': {},
-  'Ace NYC': {},
-  'W8th': {},
-  'Santa Fe': {},
-  'NOLA': {},
-  'Morgan CHI': {},
-  'Pacific': {},
-  'Warner': {},
-  'E8th LAX': {}
-};
 
 const incrementor = (objectToVerify, addOrEquals, tally) => {
    if (objectToVerify) {
